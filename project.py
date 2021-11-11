@@ -10,6 +10,8 @@ from sklearn.model_selection import cross_validate, cross_val_score
 from sklearn.metrics import mean_squared_error, precision_score, recall_score, f1_score, accuracy_score, confusion_matrix
 from sklearn.naive_bayes import GaussianNB
 from sklearn.metrics import roc_curve, roc_auc_score
+from scipy.stats import pearsonr
+from operator import itemgetter
 
 
 def distribution():
@@ -19,12 +21,40 @@ def distribution():
     print("Distribution placeholder") 
 
 
-def ten_features():
+def ten_features(input_data):
     # Present 10 features that are most reflective to fetal health conditions (there
     # are more than one way of selecting features and any of these are acceptable).
     # Present if the correlation is statistically significant (using 95% and 90%
     # critical values). (2) 
-    print("Ten features placeholder") 
+    classification = input_data.fetal_health
+    feature_correl = {
+        "baseline value": abs(pearsonr(input_data.iloc[:,0], classification)[0]),
+        "accelerations": abs(pearsonr(input_data.iloc[:,1], classification)[0]),
+        "fetal_movement": abs(pearsonr(input_data.iloc[:,2], classification)[0]),
+        "uterine_contractions": abs(pearsonr(input_data.iloc[:,3], classification)[0]),
+        "light_decelerations": abs(pearsonr(input_data.iloc[:,4], classification)[0]),
+        "severe_decelerations": abs(pearsonr(input_data.iloc[:,5], classification)[0]),
+        "prolongued_decelerations": abs(pearsonr(input_data.iloc[:,6], classification)[0]),
+        "abnormal_short_term_variability": abs(pearsonr(input_data.iloc[:,7], classification)[0]),
+        "mean_value_of_short_term_variability": abs(pearsonr(input_data.iloc[:,8], classification)[0]),
+        "percentage_of_time_with_abnormal_long_term_variability": abs(pearsonr(input_data.iloc[:,9], classification)[0]),
+        "mean_value_of_long_term_variability": abs(pearsonr(input_data.iloc[:,10], classification)[0]),
+        "histogram_width": abs(pearsonr(input_data.iloc[:,11], classification)[0]),
+        "histogram_min": abs(pearsonr(input_data.iloc[:,12], classification)[0]),
+        "histogram_max": abs(pearsonr(input_data.iloc[:,13], classification)[0]),
+        "histogram_number_of_peaks": abs(pearsonr(input_data.iloc[:,14], classification)[0]),
+        "histogram_number_of_zeroes": abs(pearsonr(input_data.iloc[:,15], classification)[0]),
+        "histogram_mode": abs(pearsonr(input_data.iloc[:,16], classification)[0]),
+        "histogram_mean": abs(pearsonr(input_data.iloc[:,17], classification)[0]),
+        "histogram_median": abs(pearsonr(input_data.iloc[:,18], classification)[0]),
+        "histogram_variance": abs(pearsonr(input_data.iloc[:,19], classification)[0]),
+        "histogram_tendency": abs(pearsonr(input_data.iloc[:,20], classification)[0])
+    }
+    feature_correl = sorted(feature_correl.items(), key=itemgetter(1))[11:]
+
+    print("10 features that are most reflective to fetal health conditions")
+    for item in feature_correl:
+        print(f"{item[0]}\n{item[1]}\n")
 
 
 def linear_regression_model(x_train, x_test, y_train):
@@ -80,18 +110,18 @@ def k_means_clustering():
 
 def main():
     # Read and split up data set (70/30)
-    input_data = pd.read_csv("winequality-red.csv")
-    x = input_data.drop("quality", axis=1)
-    y = input_data.quality
-    x_train, x_test, y_train, y_test = train_test_split(x,y,test_size=0.3,random_state=0)
+    input_data = pd.read_csv("fetal_health-1.csv")
+    # x = input_data.drop("quality", axis=1)
+    # y = input_data.quality
+    # x_train, x_test, y_train, y_test = train_test_split(x,y,test_size=0.3,random_state=0)
 
-    distribution()
-    ten_features()
-    linear_regression_model(x_train, x_test, y_train)
-    decision_tree_model(x_train, y_train)
-    confusion_matrix()
-    scores()
-    k_means_clustering()
+    #distribution()
+    ten_features(input_data)
+    # linear_regression_model(x_train, x_test, y_train)
+    # decision_tree_model(x_train, y_train)
+    # confusion_matrix()
+    # scores()
+    # k_means_clustering()
 
 
 if __name__=="__main__":
