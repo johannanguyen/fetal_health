@@ -25,7 +25,10 @@ def ten_features(input_data):
     # Present 10 features that are most reflective to fetal health conditions (there
     # are more than one way of selecting features and any of these are acceptable).
     # Present if the correlation is statistically significant (using 95% and 90%
-    # critical values). (2) 
+    # critical values). (2)
+
+    # Extract classification from csv
+    # Create dictionary to hold correlation values of each feature
     classification = input_data.fetal_health
     feature_correlation = {
         "baseline value": 0,
@@ -51,11 +54,15 @@ def ten_features(input_data):
         "histogram_tendency": 0,
     }
 
+    # Loop through dictionary
+    # Compute and update dictionary with absolute value o proper correlation
     i = 0
     for item in feature_correlation:
         feature_correlation[item] = abs(pearsonr(input_data.iloc[:,i], classification)[0])
         i += 1
 
+    # Sort the dictionary by values
+    # Grab last 10 items in the dictionary
     sorted_correlation = sorted(feature_correlation.items(), key=itemgetter(1))[11:]
     print("10 features that are most reflective to fetal health conditions")
     for item in sorted_correlation:
@@ -115,18 +122,20 @@ def k_means_clustering():
 
 def main():
     # Read and split up data set (70/30)
-    input_data = pd.read_csv("fetal_health-1.csv")
-    # x = input_data.drop("quality", axis=1)
-    # y = input_data.quality
-    # x_train, x_test, y_train, y_test = train_test_split(x,y,test_size=0.3,random_state=0)
+    input_data = pd.read_csv("winequality-red.csv")
+    x = input_data.drop("quality", axis=1)
+    y = input_data.quality
+    x_train, x_test, y_train, y_test = train_test_split(x,y,test_size=0.3,random_state=0)
+    
+    fetal_data = pd.read_csv("fetal_health-1.csv")
 
-    #distribution()
-    ten_features(input_data)
-    # linear_regression_model(x_train, x_test, y_train)
-    # decision_tree_model(x_train, y_train)
-    # confusion_matrix()
-    # scores()
-    # k_means_clustering()
+    distribution()
+    ten_features(fetal_data)
+    linear_regression_model(x_train, x_test, y_train)
+    decision_tree_model(x_train, y_train)
+    confusion_matrix()
+    scores()
+    k_means_clustering()
 
 
 if __name__=="__main__":
