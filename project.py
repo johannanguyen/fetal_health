@@ -89,12 +89,12 @@ def linear_regression_model(x_train, x_test, y_train):
     plt.show()
 
 
-def decision_tree_model(x_train, y_train):
+def decision_tree_model(fdx_train, fdy_train):
     # Develop two different models to classify CTG features into the three fetal health
     # states (I intentionally did not name which two models. Note that this is a multiclass
     # problem that can also be treated as regression, since the labels are numeric.) (2+2) 
 
-    model_tree = DecisionTreeClassifier(max_depth=3, random_state=0).fit(x_train, y_train)
+    model_tree = DecisionTreeClassifier(max_depth=3, random_state=0).fit(fdx_train, fdy_train)
     plt.figure(figsize=(8, 6))
     tree.plot_tree(model_tree, fontsize=6)
     plt.show()
@@ -142,11 +142,14 @@ def main():
     x_train, x_test, y_train, y_test = train_test_split(x,y,test_size=0.3,random_state=0)
     
     fetal_data = pd.read_csv("fetal_health-1.csv")
+    fdx = fetal_data.drop("fetal_health", axis=1)
+    fdy = fetal_data.fetal_health
+    fdx_train, fdx_test, fdy_train, fdy_test = train_test_split(x,y,test_size=0.3,random_state=0)
 
     distribution()
     ten_features(fetal_data)
     linear_regression_model(x_train, x_test, y_train)
-    decision_tree_model(x_train, y_train)
+    decision_tree_model(fdx_train, fdy_train)
     confusion_matrix()
     scores()
     k_means_clustering()
