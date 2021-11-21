@@ -119,6 +119,20 @@ def k_means_clustering():
     # the records in different clusters and visualize them (use k to be 5, 10, 15). (2.5) 
     print("K means clustering placeholder")
 
+#From homework 3
+def q2(input_data, x, y):
+    kf = KFold(n_splits=10, shuffle=True)
+    for train_index, test_index in kf.split(input_data):
+        x_train, x_test, y_train, y_test = \
+            x.iloc[train_index], x.iloc[test_index], \
+            y.iloc[train_index], y.iloc[test_index]
+    model = DecisionTreeClassifier(max_depth=3, random_state=0).fit(x_train, y_train)
+
+    print(f"Precision:\n{cross_validate(estimator=model, X=x,y=y,cv=kf,scoring='precision_macro')}\n")
+    print(f"Accuracy:\n{cross_validate(estimator=model, X=x,y=y,cv=kf,scoring='accuracy')}\n")
+    print(f"Recall:\n{cross_validate(estimator=model, X=x,y=y,cv=kf,scoring='recall_macro')}\n")
+    print(f"F1 Score:\n{cross_validate(estimator=model, X=x,y=y,cv=kf,scoring='f1_macro')}\n")
+
 
 def main():
     # Read and split up data set (70/30)
@@ -136,6 +150,8 @@ def main():
     confusion_matrix()
     scores()
     k_means_clustering()
+    # From homework 3
+    q2(input_data, x, y)
 
 
 if __name__=="__main__":
