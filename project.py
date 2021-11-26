@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import KFold
 from sklearn.model_selection import cross_validate, cross_val_score
@@ -59,7 +58,7 @@ def main():
     fetal_data = pd.read_csv("fetal_health-1.csv")
     fdx = fetal_data.drop("fetal_health", axis=1)
     fdy = fetal_data.fetal_health
-    fdx_train, fdx_test, fdy_train, fdy_test = train_test_split(x,y,test_size=0.3,random_state=0)
+    fdx_train, fdx_test, fdy_train, fdy_test = train_test_split(fdx,fdy,test_size=0.3,random_state=0)
 
     print( "a. Distributions\n",
         "b. Ten Features\n",
@@ -76,7 +75,7 @@ def main():
         elif task == "b":
             ten_features(fetal_data)
         elif task == "c1":
-            linear_regression_model(x_train, x_test, y_train)
+            linear_regression_model(fdx_train, fdx_test, fdy_train)
         elif task == "c2":
             decision_tree_model(fdx_train, fdy_train)
         elif task == "d":
