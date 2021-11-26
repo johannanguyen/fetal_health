@@ -32,19 +32,18 @@ Note that this is a multiclass problem that can also be treated as regression (s
 
 <h2>Tasks</h2>
 
-- Present a visual distribution of the 3 classes. Is the data balanced? How do you plan to circumvent the data imbalance problem, if there is one? (Hint: stratification needs to be included.) (1) 
-  - Histogram 
-  - Oversampling/undersampling 
-  - Data imbalance: unequal distribution of class labels 
+- <s>Present a visual distribution of the 3 classes.</s> Is the data balanced? How do you plan to circumvent the data imbalance problem, if there is one? (Hint: stratification needs to be included.) (1) 
 
-- Present 10 features that are most reflective to fetal health conditions (there are more than one way of selecting features and any of these are acceptable). Present if the correlation is statistically significant (using 95% and 90% critical values). (2) 
-  - Scatter plot 
-  - Correlation function (feature / fetal_health) 
+   <s>- Histogram</s>
+    - Oversampling/undersampling 
+    - Data imbalance: unequal distribution of class labels 
 
-- Develop two different models to classify CTG features into the three fetal health states (I intentionally did not name which two models. Note that this is a multiclass problem that can also be treated as regression, since the labels are numeric.) (2+2) 
+- <s>Present 10 features that are most reflective to fetal health conditions (there are more than one way of selecting features and any of these are acceptable).</s> Present if the correlation is statistically significant (using 95% and 90% critical values). (2) 
+  <s>- Correlation function (feature / fetal_health) </s>
+
+- <s>Develop two different models to classify CTG features into the three fetal health states (I intentionally did not name which two models. Note that this is a multiclass problem that can also be treated as regression, since the labels are numeric.) (2+2) 
   - Linear Regression 
-  - Logistic Regression 
-  - Decision Tree Classifier 
+  - Decision Tree Classifier</s>
 
 - Visually present the confusion matrix (1) 
   - TP, FP, TN, FN 
