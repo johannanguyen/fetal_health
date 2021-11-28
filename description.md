@@ -41,9 +41,9 @@ Note that this is a multiclass problem that can also be treated as regression (s
 - <s>Present 10 features that are most reflective to fetal health conditions (there are more than one way of selecting features and any of these are acceptable).</s> Present if the correlation is statistically significant (using 95% and 90% critical values). (2) 
   <s>- Correlation function (feature / fetal_health) </s>
 
-- <s>Develop two different models to classify CTG features into the three fetal health states (I intentionally did not name which two models. Note that this is a multiclass problem that can also be treated as regression, since the labels are numeric.) (2+2) 
+- <s>Develop two different models to classify CTG features into the three fetal health states (I intentionally did not name which two models. Note that this is a multiclass problem that can also be treated as regression, since the labels are numeric.) (2+2) </s>
   - Linear Regression 
-  - Decision Tree Classifier</s>
+  - <s>Decision Tree Classifier</s>
 
 - Visually present the confusion matrix (1) 
   - TP, FP, TN, FN 
