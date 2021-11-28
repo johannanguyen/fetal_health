@@ -12,6 +12,7 @@ from distribution import distribution
 from ten_features import ten_features
 from linear_regression import linear_regression_model
 from decision_tree import decision_tree_model
+from kmeans import kmeans
 
 
 def confusion_matrix():
@@ -27,11 +28,6 @@ def scores():
     #     (For both models in 3) 
     print("Scores placeholder")
 
-
-def k_means_clustering():
-    # Without considering the class label attribute, use k-means clustering to cluster
-    # the records in different clusters and visualize them (use k to be 5, 10, 15). (2.5) 
-    print("K means clustering placeholder")
 
 #From homework 3
 # def q2(input_data, x, y):
@@ -83,7 +79,9 @@ def main():
         elif task == "e":
             scores()
         elif task == "f":
-            k_means_clustering()
+            kmeans(fetal_data, 5)
+            kmeans(fetal_data, 10)
+            kmeans(fetal_data, 15)
         else:
             print("Not a valid task")
         task = input("Select a task to view, q to quit: ")
