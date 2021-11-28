@@ -54,9 +54,9 @@ Note that this is a multiclass problem that can also be treated as regression (s
   - Area under the Precision-Recall Curve 
   - (For both models in 3) 
 
-- Without considering the class label attribute, use k-means clustering to cluster the records in different clusters and visualize them (use k to be 5, 10, 15). (2.5) 
+<s>- Without considering the class label attribute, use k-means clustering to cluster the records in different clusters and visualize them (use k to be 5, 10, 15). (2.5) 
   - Distance between 2 data points (cluster) 
-  - Group data depending on euclidean distance 
+  - Group data depending on euclidean distance </s>
 
 
 <h2>What to submit?</h2> 
