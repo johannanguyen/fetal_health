@@ -5,7 +5,7 @@ from sklearn.cluster import KMeans
 
 def kmeans(fetal_data, k):
     # Data frame with 2 columns: baseline value, accelerations
-    x = fetal_data.iloc[:,:2]
+    x = fetal_data.loc[:, 'fetal_movement':'uterine_contractions']
     print(x)
 
     kmeans = KMeans(k)
@@ -14,5 +14,5 @@ def kmeans(fetal_data, k):
     clusters = kmeans.fit_predict(x)
     clustered_data = fetal_data.copy()
     clustered_data['Clusters'] = clusters 
-    plt.scatter(clustered_data['baseline value'],clustered_data['accelerations'],c=clustered_data['Clusters'],cmap='rainbow')
+    plt.scatter(clustered_data['fetal_movement'],clustered_data['uterine_contractions'],c=clustered_data['Clusters'],cmap='rainbow')
     plt.show()
