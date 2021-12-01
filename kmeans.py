@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 
 def kmeans(fetal_data, k):
-    # Data frame with 2 columns: baseline value, accelerations
+    # Data frame with 2 columns: fetal_movement, uterine_contractions
     x = fetal_data.loc[:, 'fetal_movement':'uterine_contractions']
     print(x)
 
