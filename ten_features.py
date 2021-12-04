@@ -1,5 +1,10 @@
 from scipy.stats import pearsonr
 from operator import itemgetter
+from scipy.stats import t
+import statistics
+import pandas as pd
+
+fetal_data = pd.read_csv("fetal_health-1.csv")
 
 def ten_features(input_data):
     # Present 10 features that are most reflective to fetal health conditions (there
@@ -8,42 +13,45 @@ def ten_features(input_data):
     # critical values). (2)
 
     # Extract classification from csv
-    # Create dictionary to hold correlation values of each feature
+    # Create nested list to hold correlation values of each feature
     classification = input_data.fetal_health
-    feature_correlation = {
-        "baseline value": 0,
-        "accelerations": 0,
-        "fetal_movement": 0,
-        "uterine_contractions": 0,
-        "light_decelerations": 0,
-        "severe_decelerations": 0,
-        "prolongued_decelerations": 0,
-        "abnormal_short_term_variability": 0,
-        "mean_value_of_short_term_variability": 0,
-        "percentage_of_time_with_abnormal_long_term_variability": 0,
-        "mean_value_of_long_term_variability": 0,
-        "histogram_width": 0,
-        "histogram_min": 0,
-        "histogram_max": 0,
-        "histogram_number_of_peaks": 0,
-        "histogram_number_of_zeroes": 0,
-        "histogram_mode": 0,
-        "histogram_mean": 0,
-        "histogram_median": 0,
-        "histogram_variance": 0,
-        "histogram_tendency": 0,
-    }
+    feature_correlation = [
+        ["baseline value"],
+        ["accelerations"],
+        ["fetal_movement"],
+        ["uterine_contractions"],
+        ["light_decelerations"],
+        ["severe_decelerations"],
+        ["prolongued_decelerations"],
+        ["abnormal_short_term_variability"],
+        ["mean_value_of_short_term_variability"],
+        ["percentage_of_time_with_abnormal_long_term_variability"],
+        ["mean_value_of_long_term_variability"],
+        ["histogram_width"],
+        ["histogram_min"],
+        ["histogram_max"],
+        ["histogram_number_of_peaks"],
+        ["histogram_number_of_zeroes"],
+        ["histogram_mode"],
+        ["histogram_mean"],
+        ["histogram_median"],
+        ["histogram_variance"],
+        ["histogram_tendency"]
+    ]
 
-    # Loop through dictionary
-    # Compute and update dictionary with absolute value o proper correlation
+    # Loop through list
+    # Compute and update list with abs(correlation), pvalue
     i = 0
     for item in feature_correlation:
-        feature_correlation[item] = abs(pearsonr(input_data.iloc[:,i], classification)[0])
+        correlation = abs(pearsonr(input_data.iloc[:,i], classification)[0])
+        pvalue = pearsonr(input_data.iloc[:,i], classification)[1]
+        item.append( [correlation, pvalue] )
         i += 1
 
-    # Sort the dictionary by values
-    # Grab last 10 items in the dictionary
-    sorted_correlation = sorted(feature_correlation.items(), key=itemgetter(1))[11:]
+    # Sort the list by correlation values
+    # Grab last 10 items in the list
+    sorted_correlation = sorted(feature_correlation, key=itemgetter(1))[11:]
+    
     print("10 features that are most reflective to fetal health conditions")
     for item in sorted_correlation:
         print(f"{item[0]}\n{item[1]}\n")
