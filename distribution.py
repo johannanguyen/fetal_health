@@ -16,6 +16,6 @@ def distribution(fetal_data):
     class_two = divide_classes(baseline_health, 2.0)
     class_three = divide_classes(baseline_health, 3.0)
 
-    histogram(class_one)
-    histogram(class_two)
-    histogram(class_three)
+    histogram(class_one, "1")
+    histogram(class_two, "2")
+    histogram(class_three, "3")

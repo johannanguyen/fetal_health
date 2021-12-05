@@ -9,10 +9,11 @@ def divide_classes(baseline_health, class_num):
             class_list.append(item[0])
     return class_list
 
-def histogram(class_list):
+def histogram(class_list, class_num):
     # Helper function for Question 1
     # Draws the histogram
     plt.hist(class_list, bins=10)
+    plt.title("Class " + class_num)
     plt.show()
 
 def print_tasks():

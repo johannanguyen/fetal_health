@@ -15,4 +15,5 @@ def kmeans(fetal_data, k):
     clustered_data = fetal_data.copy()
     clustered_data['Clusters'] = clusters 
     plt.scatter(clustered_data['fetal_movement'],clustered_data['uterine_contractions'],c=clustered_data['Clusters'],cmap='rainbow')
+    plt.title("K = " + str(k))
     plt.show()
