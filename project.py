@@ -1,57 +1,16 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
-from sklearn.model_selection import KFold
-from sklearn.model_selection import cross_validate, cross_val_score
-from sklearn.metrics import mean_squared_error, precision_score, recall_score, f1_score, accuracy_score, confusion_matrix
-from sklearn.naive_bayes import GaussianNB
-from sklearn.metrics import roc_curve, roc_auc_score
 from helper_functions import *
-
 
 # Import each task from separate python files
 from distribution import distribution
 from ten_features import ten_features
-from linear_regression import linear_regression_model
 from decision_tree import decision_tree_model
+from gaussian_bayes import g_n_b_model
 from kmeans import kmeans
 
 
-def confusion_matrix():
-    # Visually present the confusion matrix (1)
-    print("Confusion matrix placeholder")
-
-
-def scores():
-    # With a testing set of size of 30% of all available data, calculate (1.5) 
-    #     Area under the ROC Curve 
-    #     F1 Score 
-    #     Area under the Precision-Recall Curve 
-    #     (For both models in 3) 
-    print("Scores placeholder")
-
-
-#From homework 3
-# def q2(input_data, x, y):
-#     kf = KFold(n_splits=10, shuffle=True)
-#     for train_index, test_index in kf.split(input_data):
-#         x_train, x_test, y_train, y_test = \
-#             x.iloc[train_index], x.iloc[test_index], \
-#             y.iloc[train_index], y.iloc[test_index]
-#     model = DecisionTreeClassifier(max_depth=3, random_state=0).fit(x_train, y_train)
-
-#     print(f"Precision:\n{cross_validate(estimator=model, X=x,y=y,cv=kf,scoring='precision_macro')}\n")
-#     print(f"Accuracy:\n{cross_validate(estimator=model, X=x,y=y,cv=kf,scoring='accuracy')}\n")
-#     print(f"Recall:\n{cross_validate(estimator=model, X=x,y=y,cv=kf,scoring='recall_macro')}\n")
-#     print(f"F1 Score:\n{cross_validate(estimator=model, X=x,y=y,cv=kf,scoring='f1_macro')}\n")
-
-
-def main():
-    # Read and split up data set (70/30)
-    input_data = pd.read_csv("winequality-red.csv")
-    x = input_data.drop("quality", axis=1)
-    y = input_data.quality
-    x_train, x_test, y_train, y_test = train_test_split(x,y,test_size=0.3,random_state=0)
-    
+def main():    
     fetal_data = pd.read_csv("fetal_health-1.csv")
     fdx = fetal_data.drop("fetal_health", axis=1)
     fdy = fetal_data.fetal_health
@@ -65,13 +24,15 @@ def main():
         elif task == "b":
             ten_features(fetal_data)
         elif task == "c1":
-            linear_regression_model(fdx_train, fdx_test, fdy_train)
+            g_n_b_model(fdx_train, fdx_test, fdy_train, fdy_test, task)
         elif task == "c2":
-            decision_tree_model(fdx_train, fdy_train)
+            decision_tree_model(fdx_train, fdx_test, fdy_train, fdy_test, task)
         elif task == "d":
-            confusion_matrix()
+            decision_tree_model(fdx_train, fdx_test, fdy_train, fdy_test, task)
+            g_n_b_model(fdx_train, fdx_test, fdy_train, fdy_test, task)
         elif task == "e":
-            scores()
+            decision_tree_model(fdx_train, fdx_test, fdy_train, fdy_test, task)
+            g_n_b_model(fdx_train, fdx_test, fdy_train, fdy_test, task)
         elif task == "f":
             kmeans(fetal_data, 5)
             kmeans(fetal_data, 10)

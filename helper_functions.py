@@ -16,9 +16,9 @@ def histogram(class_list):
     plt.show()
 
 def print_tasks():
-    print( "a. Distributions\n",
+    print( "\na. Distributions\n",
         "b. Ten Features\n",
-        "c1. Linear Regression Model\n",
+        "c1. Gaussian Naive Bayes Model\n",
         "c2. Decision Tree Model\n",
         "d. Confusion Matrix\n",
         "e. Scores\n",

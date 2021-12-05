@@ -1,7 +1,6 @@
 from helper_functions import *
 
 def distribution(fetal_data):
-    # Question 1
     # Present a visual distribution of the 3 classes. Is the data balanced?
     # How do you plan to circumvent the data imbalance problem, if there is one?
     # (Hint: stratification needs to be included.) (1)
