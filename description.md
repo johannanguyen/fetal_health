@@ -32,18 +32,11 @@ Note that this is a multiclass problem that can also be treated as regression (s
 
 <h2>Tasks</h2>
 
-- <s>Present a visual distribution of the 3 classes.</s> Is the data balanced? How do you plan to circumvent the data imbalance problem, if there is one? (Hint: stratification needs to be included.) (1) 
+- Present a visual distribution of the 3 classes.</s> Is the data balanced? How do you plan to circumvent the data imbalance problem, if there is one? (Hint: stratification needs to be included.) (1) 
 
-   <s>- Histogram</s>
-    - Oversampling/undersampling 
-    - Data imbalance: unequal distribution of class labels 
+- Present 10 features that are most reflective to fetal health conditions (there are more than one way of selecting features and any of these are acceptable). Present if the correlation is statistically significant (using 95% and 90% critical values). (2) 
 
-- <s>Present 10 features that are most reflective to fetal health conditions (there are more than one way of selecting features and any of these are acceptable).</s> Present if the correlation is statistically significant (using 95% and 90% critical values). (2) 
-  <s>- Correlation function (feature / fetal_health) </s>
-
-- <s>Develop two different models to classify CTG features into the three fetal health states (I intentionally did not name which two models. Note that this is a multiclass problem that can also be treated as regression, since the labels are numeric.) (2+2) </s>
-  - Linear Regression 
-  - <s>Decision Tree Classifier</s>
+- Develop two different models to classify CTG features into the three fetal health states (I intentionally did not name which two models. Note that this is a multiclass problem that can also be treated as regression, since the labels are numeric.) (2+2)
 
 - Visually present the confusion matrix (1) 
   - TP, FP, TN, FN 
@@ -54,9 +47,7 @@ Note that this is a multiclass problem that can also be treated as regression (s
   - Area under the Precision-Recall Curve 
   - (For both models in 3) 
 
-<s>- Without considering the class label attribute, use k-means clustering to cluster the records in different clusters and visualize them (use k to be 5, 10, 15). (2.5) 
-  - Distance between 2 data points (cluster) 
-  - Group data depending on euclidean distance </s>
+- Without considering the class label attribute, use k-means clustering to cluster the records in different clusters and visualize them (use k to be 5, 10, 15). (2.5) 
 
 
 <h2>What to submit?</h2> 
