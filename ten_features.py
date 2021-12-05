@@ -4,8 +4,6 @@ from scipy.stats import t
 import statistics
 import pandas as pd
 
-fetal_data = pd.read_csv("fetal_health-1.csv")
-
 def ten_features(input_data):
     # Present 10 features that are most reflective to fetal health conditions (there
     # are more than one way of selecting features and any of these are acceptable).
@@ -45,7 +43,9 @@ def ten_features(input_data):
     for item in feature_correlation:
         correlation = abs(pearsonr(input_data.iloc[:,i], classification)[0])
         pvalue = pearsonr(input_data.iloc[:,i], classification)[1]
-        item.append( [correlation, pvalue] )
+        cv_90 = pvalue < .1
+        cv_95 = pvalue < .05
+        item.append( [correlation, pvalue, cv_90, cv_95] )
         i += 1
 
     # Sort the list by correlation values
@@ -54,4 +54,4 @@ def ten_features(input_data):
     
     print("10 features that are most reflective to fetal health conditions")
     for item in sorted_correlation:
-        print(f"{item[0]}\n{item[1]}\n")
+        print(f"{item[0]}\nCorrelation: {item[1][0]}\nP-value: {item[1][1]}\nSignificance Test 90%: {item[1][2]}\nSignificane Test 95%: {item[1][3]}\n")
