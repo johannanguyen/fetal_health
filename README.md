@@ -81,3 +81,10 @@ Significane Test 95%: True<br><br>
 <hr>
 
 <h2>Task 6</h2>
+For K-Means clustering, we used the <b>KMeans</b> function from <b>sklearn.cluster</b>. This was used to create the different clusters once the data was plotted. We decided to plot <b>baseline value</b> and <b>fetal_movement</b> on a scatterplot. As shown through the figures, the fetuses had a higher movement when their baseline values (in beats per minute) were closer to 120. If their heart rate fell lower or higher than that, that signaled an implication and therefore they had less movements.
+<div>
+  <img src="https://github.com/johannanguyen/fetal_health/blob/master/screenshots/kmeans1.png" height="250" width="300">
+  <img src="https://github.com/johannanguyen/fetal_health/blob/master/screenshots/kmeans2.png" height="250" width="300">
+  <img src="https://github.com/johannanguyen/fetal_health/blob/master/screenshots/kmeans3.png" height="250" width="300">  
+</div>
+<hr>
