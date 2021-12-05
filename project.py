@@ -5,6 +5,7 @@ from sklearn.model_selection import cross_validate, cross_val_score
 from sklearn.metrics import mean_squared_error, precision_score, recall_score, f1_score, accuracy_score, confusion_matrix
 from sklearn.naive_bayes import GaussianNB
 from sklearn.metrics import roc_curve, roc_auc_score
+from helper_functions import *
 
 
 # Import each task from separate python files
@@ -54,16 +55,9 @@ def main():
     fetal_data = pd.read_csv("fetal_health-1.csv")
     fdx = fetal_data.drop("fetal_health", axis=1)
     fdy = fetal_data.fetal_health
-    fdx_train, fdx_test, fdy_train, fdy_test = train_test_split(fdx,fdy,test_size=0.3,random_state=0)
-
-    print( "a. Distributions\n",
-        "b. Ten Features\n",
-        "c1. Linear Regression Model\n",
-        "c2. Decision Tree Model\n",
-        "d. Confusion Matrix\n",
-        "e. Scores\n",
-        "f. K-Means Cluster\n\n")
+    fdx_train, fdx_test, fdy_train, fdy_test = train_test_split(fdx,fdy,test_size=0.3, stratify=fetal_data['fetal_health'], random_state=0)
         
+    print_tasks()
     task = input("Select a task to view, q to quit: ")
     while(task != "q"):
         if task == "a":
@@ -84,6 +78,7 @@ def main():
             kmeans(fetal_data, 15)
         else:
             print("Not a valid task")
+        print_tasks()
         task = input("Select a task to view, q to quit: ")
 
 

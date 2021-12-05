@@ -14,3 +14,12 @@ def histogram(class_list):
     # Draws the histogram
     plt.hist(class_list, bins=10)
     plt.show()
+
+def print_tasks():
+    print( "a. Distributions\n",
+        "b. Ten Features\n",
+        "c1. Linear Regression Model\n",
+        "c2. Decision Tree Model\n",
+        "d. Confusion Matrix\n",
+        "e. Scores\n",
+        "f. K-Means Cluster\n\n")
