@@ -101,6 +101,17 @@ GNB = 126/638 = 0.19749 ~= <b>20%</b><br><br>
 <hr>
 
 <h2>Task 5</h2>
+We used the <b>roc_auc_score</b> and  <b>f1_score</b> functions from the <b>sklearn.metrics</b> module to calculate the area under the ROC curve and the F1 scores, respectively. Since this is a multiclass problem, certain parameters need to be modified. For the ROC AUC function, we set the multiclass parameter to <b>ovo</b> for one-vs-one, and for the F1 score we modified the average parameter. Initially, we used the <b>macro</b> option, however this doesn’t account for label imbalance, which is an issue with our dataset, so we later changed it to <b>micro</b> (this change is not present in early documentation, such as the powerpoint, and thus the F1 score are lower in those prior cases). Finally, there wasn’t a clean way to calculate the Precision-Recall area under the curve, as this was again a multiclass problem, however we were able to approximate this value with the <b>average_precision_score</b> function. In order to use this function, we first had to binarize our fdy_test and y_pred variables, using the <b>label_binarize</b> function from <b>sklearn.preprocessing</b>. Provided below are the results from our scorings for each model.<br><br>
+
+<b>DECISION TREE SCORES</b><br>
+ROC AUC Score:           0.8638349896405305<br>
+F1 Score:                0.8887147335423197<br>
+Average Precision Score: 0.8324974346871644<br><br>
+
+<b>GNB SCORES</b><br>
+ROC AUC Score:           0.8859486248537537<br>
+F1 Score:                0.8009404388714735<br>
+Average Precision Score: 0.8170993441891052<br><br>
 <hr>
 
 <h2>Task 6</h2>
