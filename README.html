@@ -78,9 +78,26 @@ Significane Test 95%: True<br><br>
 <hr>
 
 <h2>Task 3</h2>
+For our two models we chose a decision tree and a gaussian naive bayes. We selected these two classifier models as they both highly accurate with <b>multiclass problems</b> and typically produce comparable results, with the primary difference between them being that GNB assumes classes are independent of each other and the decision tree does not. We used the recommended 70/30 Train-Test Split. For consistency’s sake, we also used the same random state, so that the results of our models would be reproducible and comparable. Below is the visualization of our decision tree model.
+<div>
+    <img src="https://github.com/johannanguyen/fetal_health/blob/master/screenshots/decisiontree.png?raw=true" height="300" width="350">
+</div>
 <hr>
 
 <h2>Task 4</h2>
+We used the <b>heatmap</b> function from the <b>seaborn module</b> to create a 3x3 visualization of our confusion matrix. Each matrix, seen below, highlights the data imbalance of the dataset, as you can see the majority of predicted values are being correctly classified as <b>Normal</b>. Though the data could have been binarized into a 2x2 matrix, the 3x3 matrix still provides all relevant information, specifically the calculations for true/false positive/negative values for each class. Two of the most relevant of these calculations, TPR and FNR, are as follows.<br><br>
+
+<b>True Positive Ratios:</b><br>
+Decision Tree = 567/638 = 0.88871 ~= <b>89%</b><br>
+GNB = 511/638 = 0.80094 ~= <b>80%</b><br><br>
+
+<b>False Negative Ratios:</b><br>
+Decision Tree = 63/638 = 0.09874 ~= <b>10%</b><br>
+GNB = 126/638 = 0.19749 ~= <b>20%</b><br><br>
+<div>
+    <img src="https://github.com/johannanguyen/fetal_health/blob/master/screenshots/confusionmatrix1.png?raw=true" height="300" width="350">
+    <img src="https://github.com/johannanguyen/fetal_health/blob/master/screenshots/confusionmatrix2.png?raw=true" height="300" width="350">
+</div>
 <hr>
 
 <h2>Task 5</h2>
